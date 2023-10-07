@@ -1,0 +1,23 @@
+{
+	"name": "GUC Auto Eval",
+	"description": "Extension to evaluate all instuctors and courses with a single click",
+	"version": "1.0.0",
+	"manifest_version": 3,
+	"content_scripts": [
+		{
+			"matches": [
+				"https://apps.guc.edu.eg/student_ext/Evaluation/EvaluateStaff.aspx",
+				"https://apps.guc.edu.eg/student_ext/Evaluation/EvaluateCourse.aspx"
+			],
+			"js": ["popup.js"],
+			"html": ["popup.html"]
+		}
+	],
+	"background": {
+		"service_worker": "background.js"
+	},
+	"action": {
+		"default_popup": "popup.html"
+	},
+	"permissions": ["activeTab", "scripting", "webNavigation", "storage"]
+}

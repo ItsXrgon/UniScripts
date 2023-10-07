@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>GUC Auto Evaluator</title>
+	</head>
+	<style>
+		html {
+			font-size: 16px;
+		}
+		body {
+			font-family: "Open Sans", sans-serif;
+			line-height: 1.25;
+			width: 300px;
+			padding: 0;
+			margin: 0;
+			background-color: #fff;
+			border: #96218a;
+			border-width: 1px;
+			border-style: solid;
+		}
+		header {
+			background-color: #96218a;
+			color: #fff;
+			padding: 0.25rem;
+			text-align: center;
+		}
+		main {
+			padding: 1rem;
+		}
+		h2 {
+			margin: 0;
+		}
+		h3 {
+			margin: 0;
+			text-indent: 0.5rem;
+		}
+		h3::after {
+			content: "";
+			display: block;
+			width: 50%;
+			height: 1px;
+			background-color: #96218a;
+			margin: 0.5rem 0;
+		}
+		.form {
+			display: flex;
+			flex-direction: column;
+			margin: 0rem 0rem 0;
+			gap: 0.5rem;
+		}
+		.form::after {
+			content: "";
+			display: block;
+			width: 100%;
+			height: 1px;
+			background-color: #96218a;
+			margin: 0.5rem 0;
+		}
+		input[type="radio"] {
+			margin-right: 0.5rem;
+		}
+		label {
+			cursor: pointer;
+		}
+		input[type="radio"],
+		input[type="radio"]:checked {
+			display: none;
+		}
+		input[type="radio"]:checked + label {
+			font-weight: bold;
+		}
+		input[type="radio"]:checked + label:before {
+			content: "\2713";
+			margin-right: 0.5rem;
+		}
+		input[type="radio"]:checked::before {
+			content: "";
+			display: block;
+			width: 1rem;
+			height: 1rem;
+			border-radius: 1rem;
+			background-color: #96218a;
+			position: absolute;
+			top: 0.25rem;
+			left: 0.25rem;
+		}
+		.comment {
+			display: flex;
+			flex-direction: column;
+		}
+		textarea {
+			resize: none;
+			border: 1px solid #96218a;
+			border-radius: 0.25rem;
+			padding: 0.5rem;
+		}
+		button {
+			background-color: #96218a;
+			color: #fff;
+			border: none;
+			border-radius: 0.25rem;
+			padding: 0.5rem;
+			cursor: pointer;
+		}
+		button:hover {
+			background-color: #96218a;
+		}
+		.buttons {
+			display: flex;
+			flex-direction: column;
+			margin: 0rem 0rem 0;
+			gap: 0.5rem;
+		}
+		.autosubmit-button {
+			display: flex;
+			align-items: center;
+			gap: 0.25rem;
+		}
+		.autosubmit-button input {
+			cursor: pointer;
+		}
+		.autosubmit-button label {
+			cursor: pointer;
+		}
+	</style>
+	<script src="popup.js"></script>
+	<body class="" tabindex="1" data-source="popup" id="popup-content">
+		<header>
+			<h2>GUC Auto Evaluator</h2>
+		</header>
+		<main>
+			<div class="form">
+				<div>
+					<h3>Rating to give:</h3>
+				</div>
+				<div>
+					<input type="radio" id="rating-0" name="rating" value="0" />
+					<label for="rating-0">Strongly Agree</label>
+				</div>
+				<div>
+					<input type="radio" id="rating-1" name="rating" value="1" />
+					<label for="rating-1">Agree</label>
+				</div>
+				<div>
+					<input type="radio" id="rating-2" name="rating" value="2" />
+					<label for="rating-2">Slightly Agree</label>
+				</div>
+				<div>
+					<input type="radio" id="rating-3" name="rating" value="3" />
+					<label for="rating-3">Disagree</label>
+				</div>
+				<div>
+					<input type="radio" id="rating-4" name="rating" value="4" />
+					<label for="rating-4">Slightly Disagree</label>
+				</div>
+				<div>
+					<input type="radio" id="rating-5" name="rating" value="5" />
+					<label for="rating-5">Strongly Disagree</label>
+				</div>
+			</div>
+			<div class="form">
+				<h3 for="comment">Comment:</h3>
+				<textarea
+					id="comment"
+					name="comment"
+					rows="4"
+					cols="5"
+				></textarea>
+			</div>
+			<div class="form">
+				<div class="autosubmit-button">
+					<input
+						type="checkbox"
+						id="autosubmit-check"
+						name="autosubmit"
+					/>
+					<label for="autosubmit-check"
+						>Auto submit (only for single evaluation)
+					</label>
+				</div>
+			</div>
+			<div class="buttons">
+				<button id="evaluate-single">Evaluate single instructor</button>
+				<button id="evaluate-all">Evaluate all instructors</button>
+			</div>
+		</main>
+	</body>
+</html>
